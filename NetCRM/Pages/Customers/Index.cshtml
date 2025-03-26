@@ -1,0 +1,80 @@
+﻿@page
+@model NetCRM.Pages.Customers.IndexModel
+@{
+    ViewData["Title"] = "Müşteriler";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+
+    <form method="get" class="row g-3 mb-4">
+        <div class="col-md-3">
+            <input type="text" name="name" class="form-control" placeholder="Name" value="@Request.Query["name"]" />
+        </div>
+        <div class="col-md-3">
+            <input type="email" name="email" class="form-control" placeholder="Email" value="@Request.Query["email"]" />
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="region" class="form-control" placeholder="Region" value="@Request.Query["region"]" />
+        </div>
+        <div class="col-md-3">
+            <div class="d-flex gap-2">
+                <input type="date" name="startDate" class="form-control" value="@Request.Query["startDate"]" />
+                <input type="date" name="endDate" class="form-control" value="@Request.Query["endDate"]" />
+            </div>
+        </div>
+        <div class="col-md-12 text-end">
+            <button type="submit" class="btn btn-primary">Filter</button>
+            <a href="/Customers/Index" class="btn btn-outline-secondary ms-2">Clear</a>
+        </div>
+    </form>
+
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">Customer List</h2>
+        <a href="/Customers/Create" class="btn btn-primary">+ Add Customer</a>
+    </div>
+
+    @if (Model.Customers?.Any() == true)
+    {
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Email</th>
+                    <th>Region</th>
+                    <th>Registration date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in Model.Customers)
+                {
+                    <tr>
+                        <td>@customer.FirstName</td>
+                        <td>@customer.LastName</td>
+                        <td>@customer.Email</td>
+                        <td>@customer.Region</td>
+                        <td>@customer.RegistrationDate.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            <a href="/Customers/Edit/@customer.Id" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="/Customers/Delete/@customer.Id" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning">There are no customers yet.</div>
+    }
+
+    <div class="mt-4">
+        <a href="/Dashboard" class="btn btn-secondary">Come back</a>
+        <a href="/Logout" class="btn btn-danger float-end">Logout</a>
+
+    </div>
+</div>

@@ -1,0 +1,34 @@
+﻿@page "{id:int}"
+@model NetCRM.Pages.Customers.DeleteModel
+@{
+    ViewData["Title"] = "Delete Customer";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-body text-center">
+                    <h3 class="card-title mb-4">Delete Customer</h3>
+
+                    <p class="lead">Are you sure you want to delete the customer:</p>
+                    <p><strong>@Model.Customer.FirstName @Model.Customer.LastName</strong></p>
+                    <p>@Model.Customer.Email</p>
+                    <p>@Model.Customer.Region</p>
+
+                    @if (Model.ErrorMessage != null)
+                    {
+                        <div class="alert alert-danger">@Model.ErrorMessage</div>
+                    }
+
+                    <form method="post">
+                        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                        <a href="/Customers/Index" class="btn btn-secondary ms-2">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
