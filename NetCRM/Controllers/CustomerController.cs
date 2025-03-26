@@ -75,7 +75,6 @@ public class CustomerController : ControllerBase
         return Ok(new { message = "Müşteri başarıyla eklendi.", customerId = customer.Id });
     }
 
-    // PUT: api/customer/{id} Test edilmedi
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateCustomer(int id, [FromBody] CustomerDTO dto)
     {
@@ -110,7 +109,6 @@ public class CustomerController : ControllerBase
         return Ok(new { message = "Müşteri başarıyla silindi." });
     }
 
-    // GET: api/customer/filter
     [HttpGet("filter")]
     public async Task<IActionResult> FilterCustomers([FromQuery] string? name,[FromQuery] string? email,[FromQuery] string? region,[FromQuery] DateTime? startDate,[FromQuery] DateTime? endDate)
     {

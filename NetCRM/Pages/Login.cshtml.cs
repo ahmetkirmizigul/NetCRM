@@ -22,7 +22,7 @@ public class LoginModel : PageModel
 
         if (!response.IsSuccessStatusCode)
         {
-            ErrorMessage = "Geçersiz kullanýcý adý veya þifre.";
+            ErrorMessage = "Invalid username or password";
             return Page();
         }
 

@@ -18,7 +18,6 @@ public class DashboardModel : PageModel
         Username = TempData["Username"]?.ToString() ?? "Kullanýcý";
         Role = TempData["Role"]?.ToString() ?? "Bilinmiyor";
 
-        // TempData'yý koru (bir kez daha kullanýlabilsin)
         TempData.Keep();
 
         return Page();

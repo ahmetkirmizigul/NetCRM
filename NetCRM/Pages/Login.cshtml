@@ -1,7 +1,7 @@
 ﻿@page
 @model NetCRM.Pages.LoginModel
 @{
-    ViewData["Title"] = "Giriş Yap";
+    ViewData["Title"] = "Login";
 }
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -11,7 +11,7 @@
         <div class="col-md-5">
             <div class="card shadow-lg">
                 <div class="card-body">
-                    <h3 class="card-title text-center mb-4">Giriş Yap</h3>
+                    <h3 class="card-title text-center mb-4">Login</h3>
 
                     @if (Model.ErrorMessage != null)
                     {
@@ -20,15 +20,15 @@
 
                     <form method="post">
                         <div class="mb-3">
-                            <label for="Username" class="form-label">Kullanıcı Adı</label>
+                            <label for="Username" class="form-label">Username</label>
                             <input asp-for="LoginRequest.Username" class="form-control" />
                         </div>
                         <div class="mb-3">
-                            <label for="Password" class="form-label">Şifre</label>
+                            <label for="Password" class="form-label">Password</label>
                             <input asp-for="LoginRequest.Password" class="form-control" type="password" />
                         </div>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">Giriş Yap</button>
+                            <button type="submit" class="btn btn-primary">Login</button>
                         </div>
                     </form>
                 </div>
